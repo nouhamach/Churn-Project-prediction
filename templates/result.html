@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Churn Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .success {
+            color: green;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .danger {
+            color: red;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .progress-container {
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: linear-gradient(to right, purple, blue);
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 10px 20px;
+            border: none;
+            background: purple;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkviolet;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Prediction Result</h2>
+
+    {% if prediction == 1 %}
+        <p class="danger">⚠️ Client at High Risk of Churn</p>
+    {% else %}
+        <p class="success">✅ Client is Loyal</p>
+    {% endif %}
+
+    <!-- <h3>Churn Probability: {{ probability }}%</h3>
+
+    <div class="progress-container">
+        <div class="progress-bar" style="width: {{ probability }}%;"></div>
+    </div> -->
+
+    <form action="/">
+        <button type="submit">Try Another Prediction</button>
+    </form>
+
+</div>
+
+</body>
+</html>

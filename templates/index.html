@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection de Churn Client - Prédisez le risque de départ de vos clients</title>
+    <meta name="description" content="Utilisez notre outil d'IA pour prédire le risque de churn (départ) de vos clients. Optimisez votre rétention et votre satisfaction client grâce au Machine Learning.">
+    <meta name="keywords" content="churn prediction, détection de churn, rétention client, intelligence artificielle, machine learning, fidélisation">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="container-header">
+        <h1>🚀 Détecteur de Churn Client</h1>
+        <p>Anticipez le départ de vos clients grâce à l'Intelligence Artificielle</p>
+    </div>
+</header>
+
+<main class="container">
+    <section id="prediction-form">
+        <h2>Analyse de Risque Client</h2>
+        <p>Remplissez les informations ci-dessous pour obtenir une probabilité de churn en temps réel.</p>
+        
+        <form method="POST" aria-label="Formulaire de prédiction de churn">
+            <div class="grid-form">
+                <!-- 1. Informations Client -->
+                <div class="section-full" style="grid-column: 1 / -1;">
+                    <h3>1️⃣ Informations Personnelles</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender">Genre</label>
+                    <select name="gender" id="gender">
+                        <option value="Male">Homme</option>
+                        <option value="Female">Femme</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="SeniorCitizen">Sénior (65+ ans)</label>
+                    <select name="SeniorCitizen" id="SeniorCitizen">
+                        <option value="0">Non</option>
+                        <option value="1">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Partner">En couple</label>
+                    <select name="Partner" id="Partner">
+                        <option value="Yes">Oui</option>
+                        <option value="No">Non</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Dependents">Personnes à charge</label>
+                    <select name="Dependents" id="Dependents">
+                        <option value="Yes">Oui</option>
+                        <option value="No">Non</option>
+                    </select>
+                </div>
+
+                <!-- 2. Abonnement -->
+                <div class="section-full" style="grid-column: 1 / -1;">
+                    <h3>2️⃣ Détails de l'Abonnement</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenure">Ancienneté (mois)</label>
+                    <input type="number" name="tenure" id="tenure" min="0" required placeholder="ex: 12">
+                </div>
+
+                <div class="form-group">
+                    <label for="PhoneService">Service Téléphonique</label>
+                    <select name="PhoneService" id="PhoneService">
+                        <option value="Yes">Oui</option>
+                        <option value="No">Non</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="MultipleLines">Lignes Multiples</label>
+                    <select name="MultipleLines" id="MultipleLines">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                        <option value="No phone service">Pas de service téléphone</option>
+                    </select>
+                </div>
+
+                <!-- 3. Services Internet -->
+                <div class="section-full" style="grid-column: 1 / -1;">
+                    <h3>3️⃣ Internet & Sécurité</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="InternetService">Service Internet</label>
+                    <select name="InternetService" id="InternetService">
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fibre optique</option>
+                        <option value="No">Aucun</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="OnlineSecurity">Sécurité en ligne</label>
+                    <select name="OnlineSecurity" id="OnlineSecurity">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="OnlineBackup">Sauvegarde en ligne</label>
+                    <select name="OnlineBackup" id="OnlineBackup">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="DeviceProtection">Protection de l'appareil</label>
+                    <select name="DeviceProtection" id="DeviceProtection">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="TechSupport">Support Technique</label>
+                    <select name="TechSupport" id="TechSupport">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="StreamingTV">Streaming TV</label>
+                    <select name="StreamingTV" id="StreamingTV">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="StreamingMovies">Streaming Films</label>
+                    <select name="StreamingMovies" id="StreamingMovies">
+                        <option value="No">Non</option>
+                        <option value="Yes">Oui</option>
+                    </select>
+                </div>
+
+                <!-- 4. Contrat -->
+                <div class="section-full" style="grid-column: 1 / -1;">
+                    <h3>4️⃣ Facturation & Contrat</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="Contract">Type de Contrat</label>
+                    <select name="Contract" id="Contract">
+                        <option value="Month-to-month">Mensuel</option>
+                        <option value="One year">1 an</option>
+                        <option value="Two year">2 ans</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="PaperlessBilling">Facture dématérialisée</label>
+                    <select name="PaperlessBilling" id="PaperlessBilling">
+                        <option value="Yes">Oui</option>
+                        <option value="No">Non</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="PaymentMethod">Méthode de Paiement</label>
+                    <select name="PaymentMethod" id="PaymentMethod">
+                        <option value="Electronic check">Chèque électronique</option>
+                        <option value="Mailed check">Chèque postal</option>
+                        <option value="Bank transfer (automatic)">Virement automatique</option>
+                        <option value="Credit card (automatic)">Carte de crédit</option>
+                    </select>
+                </div>
+
+                <!-- 5. Charges -->
+                <div class="section-full" style="grid-column: 1 / -1;">
+                    <h3>5️⃣ Finances</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="MonthlyCharges">Charges Mensuelles (€)</label>
+                    <input type="number" step="0.01" name="MonthlyCharges" id="MonthlyCharges" required placeholder="0.00">
+                </div>
+
+                <div class="form-group">
+                    <label for="TotalCharges">Total des Charges (€)</label>
+                    <input type="number" step="0.01" name="TotalCharges" id="TotalCharges" required placeholder="0.00">
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Calculer le Risque de Churn</button>
+                </div>
+            </div>
+        </form>
+
+        {% if result %}
+        <div class="result-card {{ 'churn' if 'churn' in result.lower() else 'loyal' }}" role="alert">
+            <h2>{{ result }}</h2>
+            <div class="probability" style="font-size: 1.5rem; font-weight: bold; margin-top: 10px;">
+                Probabilité de Risque : {{ probability }}%
+            </div>
+            <div class="action-link" style="margin-top: 20px;">
+                <a href="/" style="color: inherit; text-decoration: underline;">Effectuer une nouvelle analyse</a>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    <section id="about-churn" class="info-section" style="margin-top: 3rem; padding: 2rem; background: #f1f5f9; border-radius: 8px;">
+        <h2>Pourquoi prédire le churn client ?</h2>
+        <p>Le churn (ou attrition) représente la perte de clients. Dans un marché concurrentiel, retenir un client coûte jusqu'à 10 fois moins cher qu'en acquérir un nouveau. Notre modèle prédictif vous permet d'identifier les clients à risque avant qu'ils ne partent, vous donnant l'opportunité d'agir avec des offres personnalisées.</p>
+    </section>
+</main>
+
+<footer style="text-align: center; margin-top: 40px; padding: 20px; color: #64748b; font-size: 0.875rem;">
+    <p>&copy; 2026 Outil de Prédiction de Churn Client - IA au service de la rétention.</p>
+</footer>
+
+</body>
+</html>

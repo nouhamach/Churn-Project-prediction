@@ -1,0 +1,171 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+    color: #0f172a;
+}
+
+h3 {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #475569;
+}
+
+input, select {
+    padding: 0.625rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.button-container {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+.result-card {
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+}
+
+.result-card.churn {
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    color: var(--error-color);
+}
+
+.result-card.loyal {
+    background-color: #f0fdf4;
+    border: 1px solid #dcfce7;
+    color: var(--success-color);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.container-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.container-header p {
+    color: #64748b;
+    font-size: 1.125rem;
+}
+
+.probability {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.action-link {
+    margin-top: 20px;
+}
+
+.info-section {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: #f1f5f9;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.info-section h2 {
+    color: #0f172a;
+    margin-top: 0;
+}
+
+.info-section p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+}
